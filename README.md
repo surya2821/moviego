@@ -17,7 +17,7 @@ Before you begin, ensure you have the following installed on your local machine:
 1. **Clone the repository:**
 
     ```bash
-    
+    https://github.com/surya2821/moviego.git
     cd reg
     
 

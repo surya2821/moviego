@@ -1,0 +1,69 @@
+.movie__list {
+    padding: 0 3rem 3rem 3rem;
+}
+
+.list__title {
+font-size: 1.75rem;
+margin:  2.5rem;
+}
+
+.list__cards {
+    display: flex;
+    flex-wrap: wrap ;
+    justify-content: center;
+}
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+.header-list header {
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 3em;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff;
+}
+
+#search-container {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1.2em;
+    border: 2px solid #eaeaea;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: 0 0 5px #fffeff;
+    background: #fff8f8;
+    color: #000000;
+    margin-right: 10px;
+}
+
+
+
+button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    background: #ff00ff;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 5px #ff00ff;
+    transition: box-shadow 0.3s ease;
+}
+
+button:hover {
+    box-shadow: 0 0 20px #ff00ff;
+}
+
+

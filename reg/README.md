@@ -1,61 +1,74 @@
-# Login & Registration Form with MERN stack
+# MovieGo
 
-## 👋 Introduction
+MovieGo is a web application that allows users to browse and search for movies. It consists of a frontend built with React and a backend built with Node.js and Express.
 
-Responsive user Registration and Login (SignIn & SignUp) Form functionality using React, NodeJS, ExpressJS and MongoDB and Bootstrap.
-
-
-![Screenshot (219)](https://github.com/AkshataGanbote/Registration_Login_Form_MERN_Stack/assets/117456092/442bbe2d-cda7-4d5c-a156-9e9cc9b3f108)
-
-![Screenshot (220)](https://github.com/AkshataGanbote/Registration_Login_Form_MERN_Stack/assets/117456092/01b04452-4e8b-4a24-b680-28c93f2c7550)
+## Project Structure
 
 
-## ❓Requirements
+## Prerequisites
 
-Before going forward you must have **Node js** installed on your machine.  
-Go to the link below for installation if you don't have installed yet.
+Before you begin, ensure you have the following installed on your local machine:
 
-- [Node js](https://nodejs.org/en/download)
+- [Node.js](https://nodejs.org/) (which includes npm)
+- [Git](https://git-scm.com/)
 
+## Setup
 
-## ⚙️ Installation & Getting started :
+1. **Clone the repository:**
 
-1. Download the repository
+    ```bash
+    https://github.com/surya2821/moviego.git
+    cd reg
+    
 
-2. Unzip folder and open it with [VS Code](https://code.visualstudio.com/)
+2. **Install dependencies:**
 
-- <h3> Frontend
+    For the frontend:
 
-1. Open terminal & go to `cd frontend`
+    ```bash
+    cd frontend
+    npm install
+    ```
 
-2. Install dependencies by running `npm install` command
+    For the backend:
 
-3. Run the command `npm run dev` to start live server
+    ```bash
+    cd ../backend
+    npm install
+    ```
 
-4. Click on `http://localhost:5173/`
+## Running the Application
 
-- <h3>Backend
+1. **Start the backend server:**
 
-1. Open terminal & go to `cd backend` 
+    ```bash
+    cd backend
+    node server.js
+    ```
 
-2. install dependencies by running `npm install` command
+    The backend server will start and run on `http://localhost:3001`.
 
-3. Run the command `npm start` or `nodemon index.js` to start live server on database
+2. **Start the frontend development server:**
 
+    Open a new terminal window and navigate to the frontend directory:
 
-- Congratulation 🎉 you have setup the environment successfully
+    ```bash
+    cd frontend
+    npm run dev
+    ```
 
+    The frontend development server will start and run on `http://localhost:3000`.
 
+## Folder Structure
 
-## 🛠️ Technology Used
+- **frontend/**: Contains the React frontend application.
+- **backend/**: Contains the Node.js and Express backend application.
 
-This project uses the following technologies:
+## Environment Variables
 
-- [React](https://reactjs.org) and [React Router](https://reacttraining.com/react-router/) for frontend
-- [Express](http://expressjs.com/) and [Node](https://nodejs.org/en/) for the backend
-- [MongoDB](https://www.mongodb.com/) for the database
-- [Bootstrap](https://getbootstrap.com/) for styling
+To run the backend server, you need to configure environment variables. Create a `.env` file in the `backend` directory and add the necessary variables:
 
-<br/>
-
-<h2> Do not forget to give a star! ⭐🤗 </h2>
+```env
+PORT=3001
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret

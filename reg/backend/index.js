@@ -13,9 +13,13 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-mongoose.connect('mongodb+srv://surya2819:root@cluster0.nmktdxj.mongodb.net/', {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
+});
+
+app.get('/', (req, res) => {
+    res.send('Welcome to the MovieGo API');
 });
 
 app.post('/register', (req, res) => {
@@ -48,6 +52,7 @@ app.post('/login', (req, res) => {
         });
 });
 
-app.listen(3001, () => {
-    console.log("Server listening on http://127.0.0.1:3001");
+const port = process.env.PORT || 3001;
+app.listen(port, () => {
+    console.log(`Server listening on http://127.0.0.1:${port}`);
 });

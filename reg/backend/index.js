@@ -1,58 +1,63 @@
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
-const FormDataModel = require ('./models/FormData');
-
+const FormDataModel = require('./models/FormData');
 
 const app = express();
 app.use(express.json());
-app.use(cors({
+
+const corsOptions = {
     origin: "https://moviego-xc7s-2zupntv8f-suryas-projects-8908a3b2.vercel.app",
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
-}));
-mongoose.connect('mongodb+srv://surya2819:root@cluster0.nmktdxj.mongodb.net/');
+};
 
-app.post('/register', (req, res)=>{
-    // To post / insert data into database
+app.use(cors(corsOptions)); // Apply CORS middleware globally
 
-    const {email, password} = req.body;
-    FormDataModel.findOne({email: email})
-    .then(user => {
-        if(user){
-            res.json("Already registered")
-        }
-        else{
-            FormDataModel.create(req.body)
-            .then(log_reg_form => res.json(log_reg_form))
-            .catch(err => res.json(err))
-        }
-    })
-    
+mongoose.connect('mongodb+srv://surya2819:root@cluster0.nmktdxj.mongodb.net/', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 })
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.log(err));
 
-app.post('/login', (req, res)=>{
-    // To find record from the database
-    const {email, password} = req.body;
-    FormDataModel.findOne({email: email})
-    .then(user => {
-        if(user){
-            // If user found then these 2 cases
-            if(user.password === password) {
-                res.json("Success");
-            }
-            else{
-                res.json("Wrong password");
-            }
+app.options('*', cors(corsOptions)); // Handle preflight requests for all routes
+
+app.post('/register', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await FormDataModel.findOne({ email });
+
+        if (user) {
+            return res.json("Already registered");
+        } else {
+            const newUser = await FormDataModel.create(req.body);
+            return res.json(newUser);
         }
-        // If user not found then 
-        else{
-            res.json("No records found! ");
+    } catch (err) {
+        return res.status(500).json(err);
+    }
+});
+
+app.post('/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await FormDataModel.findOne({ email });
+
+        if (user) {
+            if (user.password === password) {
+                return res.json("Success");
+            } else {
+                return res.json("Wrong password");
+            }
+        } else {
+            return res.json("No records found!");
         }
-    })
-})
+    } catch (err) {
+        return res.status(500).json(err);
+    }
+});
 
 app.listen(3001, () => {
-    console.log("Server listining on http://127.0.0.1:3001");
-
+    console.log("Server listening on http://127.0.0.1:3001");
 });

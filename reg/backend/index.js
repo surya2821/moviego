@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-    origin: "https://moviego-xc7s-2zupntv8f-suryas-projects-8908a3b2.vercel.app",
+    origin: "https://moviego-xc7s.vercel.app",
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 };

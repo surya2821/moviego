@@ -6,8 +6,11 @@ const FormDataModel = require ('./models/FormData');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
-
+app.use(cors({
+    origin: "*",
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+}));
 mongoose.connect('mongodb+srv://surya2819:root@cluster0.nmktdxj.mongodb.net/');
 
 app.post('/register', (req, res)=>{

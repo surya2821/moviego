@@ -21,31 +21,33 @@ const Home = () => {
             .then(data => setUserMovies(data.lists[0]?.movies || []));
     }, []);
 
-    const handleAddMovie = (e) => {
-        e.preventDefault();
+   const handleAddMovie = (e) => {
+    e.preventDefault();
 
-        const movie = { title: newMovieTitle, imageUrl: newMovieImage };
-
-        fetch("https://api.themoviedb.org/3/list/{list_id}/add_item", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(movie)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                setUserMovies([...userMovies, movie]);
-                setNewMovieTitle("");
-                setNewMovieImage("");
-            } else {
-                alert("Error adding movie");
-            }
-        })
-        .catch(error => console.error("Error:", error));
+    const movie = {
+        media_id: newMovieId  // TMDb API expects a media_id to add an item to a list
     };
 
+    fetch("https://api.themoviedb.org/3/list/{list_id}/add_item?api_key=YOUR_API_KEY", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(movie)
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            setUserMovies([...userMovies, movie]);
+            setNewMovieTitle("");
+            setNewMovieImage("");  // Reset your input fields
+        } else {
+            alert("Error adding movie: " + data.status_message);
+        }
+    })
+    .catch(error => console.error("Error:", error));
+};
+    
     return (
         <>
             <div className="poster">

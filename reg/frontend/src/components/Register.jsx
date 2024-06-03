@@ -18,11 +18,11 @@ const Register = () => {
             console.log(result);
             if(result.data === "Already registered"){
                 alert("E-mail already registered! Please Login to proceed.");
-                navigate('/login');
+                navigate('/');
             }
             else{
                 alert("Registered successfully! Please Login to proceed.")
-                navigate('/login');
+                navigate('/');
             }
             
         })

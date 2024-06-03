@@ -13,7 +13,7 @@ const Login = ({ setIsAuthenticated }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         
-        axios.post('https://moviego-1ugo.onrender.com:3001/login', { email, password })
+        axios.post('https://moviego-1ugo.onrender.com/login', { email, password })
             .then(result => {
                 if (result.data === "Success") {
                     setIsAuthenticated(true);

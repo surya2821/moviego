@@ -26,7 +26,7 @@ const Home = () => {
 
         const movie = { title: newMovieTitle, imageUrl: newMovieImage };
 
-        fetch("/api/movies/addMovie", {
+        fetch("https://api.themoviedb.org/3/list/{list_id}/add_item", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
